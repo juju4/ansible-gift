@@ -14,8 +14,8 @@ env:
     version: 16.04
   - distribution: ubuntu
     version: 14.04
-  - distribution: ubuntu
-    version: 12.04
+#  - distribution: ubuntu
+#    version: 12.04
 #  - distribution: alpine
 #    version: 3.4
 
@@ -24,7 +24,7 @@ before_install:
   - pwd
   - find -ls
 ## use appropriate role path and not github name
-  - ln -s ansible-myrole ../juju4.myrole
+  - ln -s ansible-gift ../juju4.gift
 ## No Xenial, https://github.com/travis-ci/travis-ci/issues/5821
 #  - sudo apt install lxd
   - echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" | sudo tee /etc/apt/sources.list.d/trusty-backports.list
