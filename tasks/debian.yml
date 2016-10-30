@@ -1,0 +1,8 @@
+---
+
+- name: adding Gift stable repository
+  apt_repository: repo='ppa:gift/stable' state=present
+
+- name: update apt cache
+  apt: update_cache=yes
+
