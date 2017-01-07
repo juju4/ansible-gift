@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: juju4
-  description: TEMPLATE
+  description: setup Ubuntu ppa of “Glorious Incident Feedback Tools” team
   license: BSD
   min_ansible_version: 2.0
   #
@@ -10,10 +10,6 @@ galaxy_info:
   # platform on this list, let us know and we'll get it added!
   #
   platforms:
-  - name: EL
-    versions:
-     - 6
-     - 7
   - name: Ubuntu
     versions:
     - trusty

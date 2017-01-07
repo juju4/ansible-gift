@@ -1,6 +1,7 @@
 ---
 
-- fail: msg="This role is only compatible with Ubuntu Trusty and Xenial"
+#- fail: msg="This role is only compatible with Ubuntu Trusty and Xenial"
+- debug: msg="This role is only compatible with Ubuntu Trusty and Xenial"
   when: not (ansible_distribution == 'Ubuntu' and (ansible_distribution_release == 'trusty' or ansible_distribution_release == 'xenial'))
 
 - name: Include version-specific variables for Ubuntu.
@@ -8,5 +9,5 @@
   when: ansible_distribution == 'Ubuntu'
 
 - include: debian.yml
-  when: ansible_distribution == 'Ubuntu'
+  when: (ansible_distribution == 'Ubuntu' and (ansible_distribution_release == 'trusty' or ansible_distribution_release == 'xenial'))
 
