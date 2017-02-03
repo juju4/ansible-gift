@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/juju4/ansible-gift.svg?branch=master)](https://travis-ci.org/juju4/ansible-gift)
+[![Build Status - Master](https://travis-ci.org/juju4/ansible-gift.svg?branch=master)](https://travis-ci.org/juju4/ansible-gift)
+[![Build Status - Devel](https://travis-ci.org/juju4/ansible-gift.svg?branch=devel)](https://travis-ci.org/juju4/ansible-gift/branches)
 # “Glorious Incident Feedback Tools” team ppa ansible role
 
 Ansible role to setup Ubuntu ppa of “Glorious Incident Feedback Tools” team
@@ -11,6 +12,7 @@ Commonly used for SIFT, GRR, Timesketch...
 It was tested on the following versions:
  * 1.9
  * 2.0
+ * 2.2
 
 ### Operating systems
 
