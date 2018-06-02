@@ -1,0 +1,10 @@
+---
+
+- name: RedHat | Ensure dnf-plugins-core is present
+  package:
+    name: dnf-plugins-core
+    state: present
+
+- name: RedHat | Enable GIFT Copr
+  command: "dnf copr enable -y @gift/stable"
+  creates: /etc/yum.repos.d/_copr_gift-stable.repo
