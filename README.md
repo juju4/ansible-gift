@@ -13,10 +13,12 @@ It was tested on the following versions:
  * 1.9
  * 2.0
  * 2.2
+ * 2.5
 
 ### Operating systems
 
-Ubuntu 14.04, 16.04 (only ones supported by the ppa at oct 2016)
+Ubuntu 14.04, 16.04 (only ones supported by the ppa at oct 2016).
+Fedora 26 to 28 (through [COPR](https://github.com/log2timeline/plaso/wiki/Fedora-Core-Packaged-Release)).
 
 ## Example Playbook
 

@@ -10,6 +10,11 @@ galaxy_info:
   # platform on this list, let us know and we'll get it added!
   #
   platforms:
+  - name: Fedora
+    versions:
+    - 26
+    - 27
+    - 28
   - name: Ubuntu
     versions:
     - trusty
