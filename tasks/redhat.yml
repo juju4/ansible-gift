@@ -8,5 +8,6 @@
 # https://github.com/ansible/ansible/issues/26673
 - name: RedHat | Enable GIFT Copr
   command: "dnf copr enable -y @gift/stable"
-  creates: /etc/yum.repos.d/_copr_gift-stable.repo
+  args:
+    creates: /etc/yum.repos.d/_copr_\@gift-stable.repo
   warn: False
