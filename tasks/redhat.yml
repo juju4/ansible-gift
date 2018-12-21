@@ -4,6 +4,8 @@
   package:
     name: dnf-plugins-core
     state: present
+  register: pkg_result
+  until: pkg_result is success
 
 # https://github.com/ansible/ansible/issues/26673
 - name: RedHat | Enable GIFT Copr
