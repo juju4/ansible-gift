@@ -1,10 +1,13 @@
 ---
 
 #- fail: msg="This role is only compatible with Ubuntu Trusty and Xenial"
-- debug: msg="This role is only compatible with Ubuntu Trusty and Xenial (ppa) and Fedora (COPR)"
+- debug: msg="This role is only compatible with Ubuntu Trusty, Xenial, Bionic (ppa) and Fedora (COPR)"
   when: >
     not (ansible_distribution == 'Ubuntu' and
-          (ansible_distribution_release == 'trusty' or ansible_distribution_release == 'xenial')
+          (ansible_distribution_release == 'trusty' or
+            ansible_distribution_release == 'xenial' or
+            ansible_distribution_release == 'bionic'
+          )
         )
 
 - name: Include version-specific variables for Ubuntu.
@@ -14,7 +17,10 @@
 - include: debian.yml
   when: >
     (ansible_distribution == 'Ubuntu' and
-      (ansible_distribution_release == 'trusty' or ansible_distribution_release == 'xenial')
+          (ansible_distribution_release == 'trusty' or
+            ansible_distribution_release == 'xenial' or
+            ansible_distribution_release == 'bionic'
+          )
     )
 
 - include: redhat.yml

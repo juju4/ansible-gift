@@ -17,7 +17,7 @@ It was tested on the following versions:
 
 ### Operating systems
 
-Ubuntu 14.04, 16.04 (only ones supported by the ppa at oct 2016).
+Ubuntu 14.04, 16.04, 18.04 (only ones supported by the ppa at Feb 2019).
 Fedora 26 to 28 (through [COPR](https://github.com/log2timeline/plaso/wiki/Fedora-Core-Packaged-Release)).
 
 ## Example Playbook
