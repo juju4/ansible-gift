@@ -9,7 +9,7 @@
   when: ansible_distribution_version != '30'
 
 - name: Fedora-30 | Ensure dnf-plugins-core is present
-  command: "dnf install dnf-plugins-core"
+  command: "dnf -y install dnf-plugins-core"
   args:
     creates: /usr/share/man/man8/dnf.plugin.copr.8.gz
     warn: False
