@@ -11,5 +11,5 @@
 - name: RedHat | Enable GIFT Copr
   command: "dnf copr enable -y @gift/stable"
   args:
-    creates: /etc/yum.repos.d/_copr_@gift-stable.repo
+    creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:group_gift:stable.repo
     warn: False
