@@ -75,6 +75,10 @@ script:
   # serverspec tests
 #  - 'sudo docker exec --tty "$(cat ${container_id})" /etc/ansible/roles/juju4.gift/test/integration/default/serverspec/run-local-tests.sh'
 
+after_failure:
+  - 'sudo docker exec --tty "$(cat ${container_id})" ls /etc/yum.repos.d/'
+
+after_script:
   # Clean up
   - 'sudo docker stop "$(cat ${container_id})"'
 
