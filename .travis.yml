@@ -8,7 +8,11 @@ env:
 #    init: /sbin/init
 #    run_opts: ""
   - distribution: fedora
-    version: 27
+    version: 31
+    init: /usr/lib/systemd/systemd
+    run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
+  - distribution: fedora
+    version: 30
     init: /usr/lib/systemd/systemd
     run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
   - distribution: ubuntu
