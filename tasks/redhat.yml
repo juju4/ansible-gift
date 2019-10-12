@@ -2,7 +2,9 @@
 
 - name: RedHat | Ensure dnf-plugins-core is present
   package:
-    name: dnf-plugins-core
+    name:
+      - python3-dnf
+      - dnf-plugins-core
     state: present
   register: pkg_result
   until: pkg_result is success
