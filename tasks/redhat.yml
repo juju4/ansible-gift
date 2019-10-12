@@ -19,7 +19,7 @@
       args:
         creates: /usr/share/man/man8/dnf.plugin.copr.8.gz
         warn: False
-      when: rpm.stdout == 'is not installed'
+      when: rpm.stdout == 'package dnf-plugins-core is not installed'
       register: pkg_result
       until: pkg_result is success
   when: ansible_distribution_version == '30'
