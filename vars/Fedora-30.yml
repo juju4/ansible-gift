@@ -1,4 +1,5 @@
 ---
 
 dnf_deps_pkgs:
+  - python3-dnf-plugins-core
   - dnf-plugins-core
