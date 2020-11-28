@@ -10,7 +10,7 @@
 
 - block:
     - name: check if dnf-plugins-core present
-      command: "rpm -q dnf-plugins-core" # noqa 303
+      command: "rpm -q dnf-plugins-core"  # noqa 303
       register: rpm
       ignore_errors: true
       changed_when: false

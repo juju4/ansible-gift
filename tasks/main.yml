@@ -1,6 +1,6 @@
 ---
 
-#- fail: msg="This role is only compatible with Ubuntu Trusty and Xenial"
+# - fail: msg="This role is only compatible with Ubuntu Trusty and Xenial"
 - debug: msg="This role is only compatible with Ubuntu Trusty, Xenial, Bionic (ppa) and Fedora (COPR)"
   when: >
     not (ansible_distribution == 'Ubuntu' and
