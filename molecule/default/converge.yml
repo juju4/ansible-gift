@@ -6,5 +6,5 @@
     https_proxy: "{{ lookup('env', 'https_proxy') }}"
     no_proxy: "{{ lookup('env', 'no_proxy') }}"
   roles:
-    - { role: juju4.redhat_epel, when: ansible_os_family == "RedHat" }
+    - { role: juju4.redhat_epel, when: ansible_os_family == "RedHat" and ansible_distribution != "Fedora"}
     - role: juju4.gift
