@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: gift
   author: juju4
   description: setup repository of "Glorious Incident Feedback Tools" team
   license: BSD
