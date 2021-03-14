@@ -13,7 +13,7 @@
 
         - name: Fetch content of gift sources.list
           slurp:
-            src: "/etc/apt/sources.list.d/gift-ubuntu-stable-{{ ansible_distribution_release }}.list"
+            src: "/etc/apt/sources.list.d/ppa_gift_stable_{{ ansible_distribution_release }}.list"
           register: sources
         - name: Validate sources
           assert:
