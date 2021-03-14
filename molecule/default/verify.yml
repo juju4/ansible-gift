@@ -3,13 +3,20 @@
 - name: Verify
   hosts: gift
   tasks:
-    - name: Fetch content of gift sources.list
-      slurp:
-        src: "/etc/apt/sources.list.d/gift-ubuntu-stable-{{ ansible_distribution_release }}.list"
-      register: sources
-      when: ansible_distribution == 'Ubuntu'
-    - name: Validate sources
-      assert:
-        that: >
-          "'deb http://ppa.launchpad.net/gift' in sources['content'] | b64decode"
+    - block:
+        - name: list /etc/apt/sources.list.d
+          command: ls /etc/apt/sources.list.d
+          changed_when: false
+          register: listd
+        - name: list output
+          debug: var=listd
+
+        - name: Fetch content of gift sources.list
+          slurp:
+            src: "/etc/apt/sources.list.d/gift-ubuntu-stable-{{ ansible_distribution_release }}.list"
+          register: sources
+        - name: Validate sources
+          assert:
+            that: >
+              "'deb http://ppa.launchpad.net/gift' in sources['content'] | b64decode"
       when: ansible_distribution == 'Ubuntu'
