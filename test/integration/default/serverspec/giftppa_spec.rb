@@ -18,4 +18,3 @@ describe file('/etc/apt/sources.list.d/ppa_gift_stable_trusty.list'), :if => os[
   it { should exist }
   its(:content) { should match /deb http:\/\/ppa.launchpad.net\/gift\/stable\/ubuntu trusty main/ }
 end
-
