@@ -2,7 +2,7 @@
 
 - name: RedHat | Ensure dnf-plugins-core is present
   package:
-    name: "{{ dnf_deps_pkgs | default([]) }}"
+    name: "{{ gift_deps_pkgs | default([]) }}"
     state: present
   register: pkg_result
   until: pkg_result is success

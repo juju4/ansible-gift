@@ -1,5 +1,12 @@
 ---
 
+- name: Debian | Ensure dependencies are present
+  package:
+    name: "{{ gift_deps_pkgs | default([]) }}"
+    state: present
+  register: pkg_result
+  until: pkg_result is success
+
 - name: adding Gift stable repository
   apt_repository: repo='ppa:gift/stable' state=present
   notify:
