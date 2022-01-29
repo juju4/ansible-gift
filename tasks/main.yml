@@ -20,7 +20,7 @@
   include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
   when: ansible_distribution == 'Fedora'
 
-- include: debian.yml
+- import_tasks: debian.yml
   when: >
     (ansible_distribution == 'Ubuntu' and
           (ansible_distribution_release == 'trusty' or
@@ -30,5 +30,5 @@
           )
     )
 
-- include: redhat.yml
+- import_tasks: redhat.yml
   when: ansible_os_family == "RedHat" and ansible_distribution == "Fedora"
