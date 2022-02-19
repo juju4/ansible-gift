@@ -8,7 +8,10 @@
   until: pkg_result is success
 
 - name: adding Gift stable repository
-  apt_repository: repo='ppa:gift/stable' state=present
+  apt_repository:
+    repo: 'ppa:gift/stable'
+    state: present
+    codename: "{{ ansible_distribution_release }}"
   notify:
     - update apt cache
   register: pkg_result
