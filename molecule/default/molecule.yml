@@ -19,6 +19,9 @@ platforms:
       - gift
 provisioner:
   name: ansible
+  config_options:
+    defaults:
+      verbosity: 2
 scenario:
   name: default
 verifier:
