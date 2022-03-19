@@ -5,18 +5,18 @@
   tasks:
     - block:
         - name: list /etc/apt/sources.list.d
-          command: ls /etc/apt/sources.list.d
+          ansible.builtin.command: ls /etc/apt/sources.list.d
           changed_when: false
           register: listd
         - name: list output
-          debug: var=listd
+          ansible.builtin.debug: var=listd
 
         - name: Fetch content of gift sources.list
-          slurp:
+          ansible.builtin.slurp:
             src: "/etc/apt/sources.list.d/ppa_gift_stable_{{ ansible_distribution_release }}.list"
           register: sources
         - name: Validate sources
-          assert:
+          ansible.builtin.assert:
             that: >
               "'deb http://ppa.launchpad.net/gift' in sources['content'] | b64decode"
       when: ansible_distribution == 'Ubuntu'

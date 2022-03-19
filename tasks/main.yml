@@ -1,7 +1,7 @@
 ---
 
 - name: Compatibility Warning
-  debug: msg="This role is only compatible with Ubuntu Trusty, Xenial, Bionic (ppa) and Fedora (COPR)"
+  ansible.builtin.debug: msg="This role is only compatible with Ubuntu Trusty, Xenial, Bionic (ppa) and Fedora (COPR)"
   when: >
     not (ansible_distribution == 'Ubuntu' and
           (ansible_distribution_release == 'trusty' or
@@ -13,11 +13,11 @@
     and ansible_distribution != "Fedora"
 
 - name: Include version-specific variables for Ubuntu.
-  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+  ansible.builtin.include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
   when: ansible_distribution == 'Ubuntu'
 
 - name: Include version-specific variables for Fedora.
-  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+  ansible.builtin.include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
   when: ansible_distribution == 'Fedora'
 
 - import_tasks: debian.yml

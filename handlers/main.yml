@@ -1,6 +1,6 @@
 ---
 
 - name: update apt cache
-  apt: update_cache=yes
+  ansible.builtin.apt: update_cache=yes
   register: pkg_result
   until: pkg_result is success

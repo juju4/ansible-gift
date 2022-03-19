@@ -1,7 +1,7 @@
 ---
 
 - name: RedHat | Ensure dnf-plugins-core is present
-  package:
+  ansible.builtin.package:
     name: "{{ gift_deps_pkgs | default([]) }}"
     state: present
   register: pkg_result
@@ -10,12 +10,12 @@
 
 - block:
     - name: check if dnf-plugins-core present
-      command: "rpm -q dnf-plugins-core"  # noqa 303
+      ansible.builtin.command: "rpm -q dnf-plugins-core"  # noqa 303
       register: rpm
       ignore_errors: true
       changed_when: false
     - name: Fedora-30 | Ensure dnf-plugins-core is present
-      command: "dnf -y install dnf-plugins-core"
+      ansible.builtin.command: "dnf -y install dnf-plugins-core"
       args:
         creates: /usr/share/man/man8/dnf.plugin.copr.8.gz
         warn: False
@@ -26,7 +26,7 @@
 
 # https://github.com/ansible/ansible/issues/26673
 - name: RedHat | Enable GIFT Copr
-  command: "dnf copr enable -y @gift/stable"
+  ansible.builtin.command: "dnf copr enable -y @gift/stable"
   args:
     creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:group_gift:stable.repo
     warn: False
