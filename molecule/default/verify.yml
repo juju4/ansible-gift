@@ -3,7 +3,8 @@
 - name: Verify
   hosts: gift
   tasks:
-    - block:
+    - name: Ubuntu
+      block:
         - name: list /etc/apt/sources.list.d
           ansible.builtin.command: ls /etc/apt/sources.list.d
           changed_when: false

@@ -8,7 +8,8 @@
   until: pkg_result is success
   when: ansible_distribution_version != '30'
 
-- block:
+- name: Fedora 30
+  block:
     - name: check if dnf-plugins-core present
       ansible.builtin.command: "rpm -q dnf-plugins-core"  # noqa 303
       register: rpm
