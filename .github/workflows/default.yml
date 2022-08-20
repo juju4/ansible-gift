@@ -17,11 +17,9 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: [3.8]
-        molecule_distro: ['fedora:36', 'fedora:35', 'ubuntu:22.04', 'ubuntu:20.04', 'ubuntu:18.04']
+        molecule_distro: ['fedora:36', 'ubuntu:22.04', 'ubuntu:20.04', 'ubuntu:18.04']
         include:
           - molecule_distro: 'fedora:36'
-            experimental: false
-          - molecule_distro: 'fedora:35'
             experimental: false
           - molecule_distro: 'ubuntu:22.04'
             experimental: true

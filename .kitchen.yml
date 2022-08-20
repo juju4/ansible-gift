@@ -20,10 +20,10 @@ provisioner:
   ansible_connection: ssh
 
 platforms:
+  - name: ubuntu-22.04
   - name: ubuntu-20.04
   - name: ubuntu-18.04
-  - name: fedora-31
-  - name: fedora-30
+  - name: fedora-36
 
 suites:
   - name: default

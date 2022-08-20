@@ -4,7 +4,8 @@
 # “Glorious Incident Feedback Tools” team ppa ansible role
 
 Ansible role to setup Ubuntu ppa of “Glorious Incident Feedback Tools” team
-https://launchpad.net/~gift/+archive/ubuntu/stable
+* https://launchpad.net/~gift/+archive/ubuntu/stable
+* https://copr.fedorainfracloud.org/groups/g/gift/coprs/
 Commonly used for SIFT, GRR, Timesketch...
 
 ## Requirements & Dependencies
