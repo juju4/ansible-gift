@@ -1,11 +1,10 @@
 ---
 
 - name: Compatibility Warning
-  ansible.builtin.debug: msg="This role is only compatible with Ubuntu Trusty, Xenial, Bionic, Jammy (ppa) and Fedora (COPR)"
+  ansible.builtin.debug: msg="This role is only compatible with Ubuntu (ppa) and Fedora (COPR)"
   when: >
     not (ansible_distribution == 'Ubuntu' and
-          (ansible_distribution_release == 'trusty' or
-            ansible_distribution_release == 'xenial' or
+          (
             ansible_distribution_release == 'bionic' or
             ansible_distribution_release == 'focal' or
             ansible_distribution_release == 'jammy'
@@ -24,8 +23,7 @@
 - import_tasks: debian.yml
   when: >
     (ansible_distribution == 'Ubuntu' and
-          (ansible_distribution_release == 'trusty' or
-            ansible_distribution_release == 'xenial' or
+          (
             ansible_distribution_release == 'bionic' or
             ansible_distribution_release == 'focal' or
             ansible_distribution_release == 'jammy'
