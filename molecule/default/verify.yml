@@ -5,11 +5,11 @@
   tasks:
     - name: Ubuntu
       block:
-        - name: list /etc/apt/sources.list.d
+        - name: List /etc/apt/sources.list.d
           ansible.builtin.command: ls /etc/apt/sources.list.d
           changed_when: false
           register: listd
-        - name: list output
+        - name: List output
           ansible.builtin.debug: var=listd
 
         - name: Fetch content of gift sources.list
