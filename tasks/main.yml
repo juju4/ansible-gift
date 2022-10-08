@@ -1,7 +1,8 @@
 ---
 
 - name: Compatibility Warning
-  ansible.builtin.debug: msg="This role is only compatible with Ubuntu (ppa) and Fedora (COPR)"
+  ansible.builtin.debug:
+    msg: "This role is only compatible with Ubuntu (ppa) and Fedora (COPR)"
   when: >
     not (ansible_distribution == 'Ubuntu' and
           (
@@ -20,7 +21,8 @@
   ansible.builtin.include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
   when: ansible_distribution == 'Fedora'
 
-- import_tasks: debian.yml
+- name: Import debian
+  ansible.builtin.import_tasks: debian.yml
   when: >
     (ansible_distribution == 'Ubuntu' and
           (
@@ -30,5 +32,6 @@
           )
     )
 
-- import_tasks: redhat.yml
+- name: Import redhat
+  ansible.builtin.import_tasks: redhat.yml
   when: ansible_os_family == "RedHat" and ansible_distribution == "Fedora"

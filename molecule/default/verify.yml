@@ -4,13 +4,15 @@
   hosts: gift
   tasks:
     - name: Ubuntu
+      when: ansible_distribution == 'Ubuntu'
       block:
         - name: List /etc/apt/sources.list.d
           ansible.builtin.command: ls /etc/apt/sources.list.d
           changed_when: false
           register: listd
         - name: List output
-          ansible.builtin.debug: var=listd
+          ansible.builtin.debug:
+            var: listd
 
         - name: Fetch content of gift sources.list
           ansible.builtin.slurp:
@@ -20,4 +22,3 @@
           ansible.builtin.assert:
             that: >
               "'deb http://ppa.launchpad.net/gift' in sources['content'] | b64decode"
-      when: ansible_distribution == 'Ubuntu'
