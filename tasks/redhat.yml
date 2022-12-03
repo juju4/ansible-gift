@@ -7,9 +7,8 @@
   register: pkg_result
   until: pkg_result is success
 
-# https://github.com/ansible/ansible/issues/26673
 - name: RedHat | Enable GIFT Copr
-  ansible.builtin.command: "dnf copr enable -y @gift/stable"
-  args:
-    creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:group_gift:stable.repo
-    warn: False
+  community.general.copr:
+    host: copr.fedorainfracloud.org
+    state: enabled
+    name: '@gift/stable'
