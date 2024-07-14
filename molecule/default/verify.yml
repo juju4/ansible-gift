@@ -22,3 +22,13 @@
           ansible.builtin.assert:
             that: >
               "'deb http://ppa.launchpad.net/gift' in sources['content'] | b64decode"
+    - name: Fedora
+      when: ansible_distribution == 'Fedora'
+      block:
+        - name: List /etc/yum.repos.d/*.repo
+          ansible.builtin.command: ls /etc/yum.repos.d/*.repo
+          changed_when: false
+          register: listd
+        - name: List output
+          ansible.builtin.debug:
+            var: listd
