@@ -1,0 +1,5 @@
+---
+
+gift_deps_pkgs:
+  # - python3-dnf
+  - dnf-plugins-core
