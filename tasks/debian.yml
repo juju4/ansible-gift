@@ -1,5 +1,12 @@
 ---
 
+- name: Debian | Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  register: pkg_result
+  until: pkg_result is success
+
 - name: Debian | Ensure dependencies are present
   ansible.builtin.package:
     name: "{{ gift_deps_pkgs | default([]) }}"
