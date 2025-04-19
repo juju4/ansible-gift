@@ -23,15 +23,13 @@ jobs:
       matrix:
         python-version: [3.8]
         include:
-          - molecule_distro: 'fedora:40'
+          - molecule_distro: 'fedora:41'
             experimental: true
-          - molecule_distro: 'fedora:38'
+          - molecule_distro: 'fedora:40'
             experimental: true
           - molecule_distro: 'ubuntu:24.04'
             experimental: true
           - molecule_distro: 'ubuntu:22.04'
-            experimental: false
-          - molecule_distro: 'ubuntu:20.04'
             experimental: false
     env:
       ANSIBLE_CALLBACKS_ENABLED: profile_tasks
