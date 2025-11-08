@@ -8,18 +8,24 @@
           (
             ansible_distribution_release == 'bionic' or
             ansible_distribution_release == 'focal' or
-            ansible_distribution_release == 'jammy'
+            ansible_distribution_release == 'jammy' or
+            ansible_distribution_release == 'noble'
           )
         )
     and ansible_distribution != "Fedora"
 
-- name: Include version-specific variables for Ubuntu.
-  ansible.builtin.include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-  when: ansible_distribution == 'Ubuntu'
-
-- name: Include version-specific variables for Fedora.
-  ansible.builtin.include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-  when: ansible_distribution == 'Fedora'
+- name: Include variables
+  ansible.builtin.include_vars: "{{ lookup('ansible.builtin.first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+        - '{{ ansible_distribution }}.yml'
+        - "{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
+        - '{{ ansible_os_family }}.yml'
+      paths:
+        - 'vars'
 
 - name: Import debian
   ansible.builtin.import_tasks: debian.yml
