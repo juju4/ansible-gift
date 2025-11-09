@@ -25,9 +25,15 @@
     - name: Fedora
       when: ansible_distribution == 'Fedora'
       block:
+        - name: Fedora | dnf repolist
+          ansible.builtin.command: dnf repolist
+          changed_when: false
+          failed_when: false
+          register: repolist
         - name: List /etc/yum.repos.d/*.repo
           ansible.builtin.command: ls /etc/yum.repos.d/*.repo
           changed_when: false
+          failed_when: false
           register: listd
         - name: List output
           ansible.builtin.debug:
