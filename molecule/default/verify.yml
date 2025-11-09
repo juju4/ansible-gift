@@ -30,6 +30,10 @@
           changed_when: false
           failed_when: false
           register: repolist
+        - name: Fedora | Validate repolist
+          ansible.builtin.assert:
+            that:
+              - "'group_gift:stable Copr repo for stable owned by @gift' in repolist.stdout"
         - name: List /etc/yum.repos.d/*.repo
           ansible.builtin.command: ls /etc/yum.repos.d/*.repo
           changed_when: false
