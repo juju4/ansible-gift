@@ -1,12 +1,5 @@
 ---
 
-- name: RedHat | Ensure python3-libdnf5 is present
-  ansible.builtin.package:
-    name: python3-libdnf5
-    state: present
-  register: pkg_result
-  until: pkg_result is success
-
 - name: RedHat | Ensure dnf-plugins-core is present
   ansible.builtin.package:
     name: "{{ gift_deps_pkgs | default([]) }}"
