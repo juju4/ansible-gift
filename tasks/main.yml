@@ -29,14 +29,8 @@
 
 - name: Import debian
   ansible.builtin.import_tasks: debian.yml
-  when: >
-    (ansible_distribution == 'Ubuntu' and
-          (
-            ansible_distribution_release == 'bionic' or
-            ansible_distribution_release == 'focal' or
-            ansible_distribution_release == 'jammy'
-          )
-    )
+  when:
+    - ansible_distribution == 'Ubuntu'
 
 - name: Import redhat
   ansible.builtin.import_tasks: redhat.yml
