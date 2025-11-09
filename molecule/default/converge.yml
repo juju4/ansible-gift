@@ -11,6 +11,11 @@
         update_cache: yes
         cache_valid_time: 3600
       when: ansible_os_family == "Debian"
+    - name: RedHat | Ensure python3-libdnf5 is present
+      ansible.builtin.raw: dnf install -y python3-libdnf5
+      register: python3
+      changed_when: "'installed' in python3.stdout"
+      when: (ansible_distribution == "Fedora" and ansible_distribution_major_version | int >= 41)
   roles:
     - { role: juju4.redhat_epel, when: ansible_os_family == "RedHat" and ansible_distribution != "Fedora"}
     - role: juju4.gift
