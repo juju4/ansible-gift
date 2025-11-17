@@ -21,7 +21,7 @@
         - name: Validate sources
           ansible.builtin.assert:
             that:
-              - "'deb http://ppa.launchpad.net/gift' in sources['content'] | b64decode"
+              - "'deb http://ppa.launchpadcontent.net/gift' in sources['content'] | b64decode"
     - name: Fedora
       when: ansible_distribution == 'Fedora'
       block:
