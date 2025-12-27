@@ -3,7 +3,7 @@
 - name: Debian | Update apt cache
   ansible.builtin.apt:
     update_cache: yes
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when: ansible_facts['distribution'] == 'Debian' or ansible_facts['distribution'] == 'Ubuntu'
   register: pkg_result
   until: pkg_result is success
 
@@ -18,7 +18,7 @@
   ansible.builtin.apt_repository:
     repo: 'ppa:gift/stable'
     state: present
-    codename: "{{ ansible_distribution_release }}"
+    codename: "{{ ansible_facts['distribution_release'] }}"
   notify:
     - Update apt cache
   register: pkg_result

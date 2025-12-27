@@ -4,34 +4,34 @@
   ansible.builtin.debug:
     msg: "This role is only compatible with Ubuntu (ppa) and Fedora (COPR)"
   when: >
-    not (ansible_distribution == 'Ubuntu' and
+    not (ansible_facts['distribution'] == 'Ubuntu' and
           (
-            ansible_distribution_release == 'bionic' or
-            ansible_distribution_release == 'focal' or
-            ansible_distribution_release == 'jammy' or
-            ansible_distribution_release == 'noble'
+            ansible_facts['distribution_release'] == 'bionic' or
+            ansible_facts['distribution_release'] == 'focal' or
+            ansible_facts['distribution_release'] == 'jammy' or
+            ansible_facts['distribution_release'] == 'noble'
           )
         )
-    and ansible_distribution != "Fedora"
+    and ansible_facts['distribution'] != "Fedora"
 
 - name: Include variables
   ansible.builtin.include_vars: "{{ lookup('ansible.builtin.first_found', params) }}"
   vars:
     params:
       files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-        - '{{ ansible_distribution }}.yml'
-        - "{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
-        - '{{ ansible_os_family }}.yml'
+        - "{{ ansible_facts['distribution'] }}-{{ ansible_facts['distribution_version'] }}.yml"
+        - "{{ ansible_facts['distribution'] }}-{{ ansible_facts['distribution_major_version'] }}.yml"
+        - "{{ ansible_facts['distribution'] }}.yml"
+        - "{{ ansible_facts['os_family'] }}-{{ ansible_facts['distribution_major_version'] }}.yml"
+        - "{{ ansible_facts['os_family'] }}.yml"
       paths:
         - 'vars'
 
 - name: Import debian
   ansible.builtin.import_tasks: debian.yml
   when:
-    - ansible_distribution == 'Ubuntu'
+    - ansible_facts['distribution'] == 'Ubuntu'
 
 - name: Import redhat
   ansible.builtin.import_tasks: redhat.yml
-  when: ansible_os_family == "RedHat" and ansible_distribution == "Fedora"
+  when: ansible_facts['os_family'] == "RedHat" and ansible_facts['distribution'] == "Fedora"
