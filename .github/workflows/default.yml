@@ -26,9 +26,9 @@ jobs:
             experimental: false
           - molecule_distro: 'fedora:41'
             experimental: false
-          - molecule_distro: 'ubuntu:24.04'
+          - molecule_distro: 'ubuntu:26.04'
             experimental: false
-          - molecule_distro: 'ubuntu:22.04'
+          - molecule_distro: 'ubuntu:24.04'
             experimental: false
     env:
       ANSIBLE_CALLBACKS_ENABLED: profile_tasks
