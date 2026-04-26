@@ -27,7 +27,7 @@ jobs:
           - molecule_distro: 'fedora:41'
             experimental: false
           - molecule_distro: 'ubuntu:26.04'
-            experimental: false
+            experimental: true
           - molecule_distro: 'ubuntu:24.04'
             experimental: false
     env:
