@@ -14,6 +14,24 @@
   register: pkg_result
   until: pkg_result is success
 
+- name: Upload gift gpg public key
+  ansible.builtin.copy:
+    src: 3ed1eaece81894b171d7da5b5e80511b10c598b8.asc
+    dest: "/tmp/gift.asc"
+    mode: '0644'
+
+- name: Check current gpg keys
+  ansible.builtin.command:
+    cmd: gpg --list-keys
+  changed_when: false
+  register: keys
+
+- name: Import local gpg key
+  ansible.builtin.command:  # noqa no-changed-when
+    cmd: "gpg --import /tmp/gift.asc"
+  when:
+    - "'3ED1EAECE81894B171D7DA5B5E80511B10C598B8' not in keys.stdout"
+
 - name: Adding Gift stable repository
   ansible.builtin.apt_repository:
     repo: 'ppa:gift/stable'
