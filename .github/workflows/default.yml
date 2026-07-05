@@ -22,9 +22,9 @@ jobs:
       max-parallel: 4
       matrix:
         include:
-          - molecule_distro: 'fedora:42'
+          - molecule_distro: 'fedora:44'
             experimental: false
-          - molecule_distro: 'fedora:41'
+          - molecule_distro: 'fedora:43'
             experimental: false
           - molecule_distro: 'ubuntu:26.04'
             experimental: true
