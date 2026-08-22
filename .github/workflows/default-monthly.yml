@@ -1,12 +1,10 @@
 ---
-name: AnsibleCI
+name: AnsibleCI-monthly
 
 on:
-  push:
-  pull_request:
   workflow_dispatch:
-  schedule:  # run weekly, every monday 02:00
-    - cron: '0 2 * * 1'
+  schedule:  # run on the 10th of the month at 01:00 UTC
+    - cron: '0 1 10 * *'
   merge_group:
 
 concurrency:
@@ -24,11 +22,17 @@ jobs:
     continue-on-error: ${{ matrix.experimental }}
     strategy:
       fail-fast: false
-      max-parallel: 4
+      max-parallel: 2
       matrix:
         include:
           - molecule_distro: 'fedora:44'
             experimental: false
+            suite: default
+          - molecule_distro: 'fedora:43'
+            experimental: false
+            suite: default
+          - molecule_distro: 'ubuntu:26.04'
+            experimental: true
             suite: default
           - molecule_distro: 'ubuntu:24.04'
             experimental: false
@@ -40,11 +44,12 @@ jobs:
       ANSIBLE_SUITE: ${{ matrix.suite }}
 
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
           path: ${{ env.ANSIBLE_ROLE }}
       - name: Set up Python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7.0.0
         with:
           python-version: '3.13'
       - name: Cache
