@@ -1,7 +1,7 @@
-[![Actions Status - Master](https://github.com/juju4/ansible-gift/workflows/AnsibleCI/badge.svg)](https://github.com/juju4/ansible-gift/actions?query=branch%3Amaster)
-[![Actions Status - Devel](https://github.com/juju4/ansible-gift/workflows/AnsibleCI/badge.svg?branch=devel)](https://github.com/juju4/ansible-gift/actions?query=branch%3Adevel)
-
 # “Glorious Incident Feedback Tools” team ppa ansible role
+
+[![Actions Status - Main](https://github.com/juju4/ansible-gift/workflows/AnsibleCI/badge.svg)](https://github.com/juju4/ansible-gift/actions?query=branch%3Amain)
+[![Actions Status - Devel](https://github.com/juju4/ansible-gift/workflows/AnsibleCI/badge.svg?branch=devel)](https://github.com/juju4/ansible-gift/actions?query=branch%3Adevel)
 
 Ansible role to setup Ubuntu ppa of “Glorious Incident Feedback Tools” team
 * https://launchpad.net/~gift/+archive/ubuntu/stable
